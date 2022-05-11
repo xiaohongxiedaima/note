@@ -39,11 +39,11 @@ An unlock on a monitor happens-before every subsequent lock on that monitor.
 ```java
 class monitorLock {
     private int value = 0;
-  
+
     public synchronized int getValue() {
         return value;
     }
-    
+
     public synchronized void setValue(int value) {
         this.value = value;
     }
@@ -110,8 +110,4 @@ If an action a happens-before an action b, and b happens before an action c, the
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/A3ibcic1Xe0iaQ3bQGCubgA1AePT7Iq1t9rKL8fBtFF0Af1EdtOR3BOWiceBjbrKz4en0ldbaSa4CwSVwbSRALeNQQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-
-
 在上图中，2 happens - before 4 由 join 规则来产生，4 happens - before 5 是程序顺序规则，所以根据线程传递规则，将会有 2 happens - before 5，这也意味着，线程 A 执行操作 ThreadB.join 并成功返回后，线程 B 中的任意操作将对线程 A 可见。
-
-
